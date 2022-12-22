@@ -1,3 +1,7 @@
+#
+# Note: this file isn't for direct use, it is meant for making this repository
+# be fetchable by means of FetchContent CMake functionality.
+#
 cmake_minimum_required(VERSION 3.24)
 
 project(ez-common
