@@ -4,10 +4,33 @@
 #
 cmake_minimum_required(VERSION 3.24)
 
-project(ez-common
-    VERSION 1.0.0
-    LANGUAGES CXX
-)
+project(ez-common)
+
+
+##############################################################################
+# Setup project general properties
+##############################################################################
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
+include(define_build_profile)
+
+
+##############################################################################
+# Define functions for enabling (on demand) preset custom build profiles
+##############################################################################
+
+# Enable DEBUG_WITH_UBASAN custom build configuration.
+function(ez_common_enable_build_profile_debug_with_ubasan)
+    ez_common_define_build_profile(Debug_with_ubasan
+        BASED_ON_PROFILE Debug
+        C_FLAGS
+            -fsanitize=address -fsanitize=undefined -fno-omit-frame-pointer -fno-sanitize-recover=all
+        CXX_FLAGS
+            -fsanitize=address -fsanitize=undefined -fno-omit-frame-pointer -fno-sanitize-recover=all
+        EXE_LINKER_FLAGS
+            -fsanitize=address -fsanitize=undefined -fno-omit-frame-pointer -fno-sanitize-recover=all
+    )
+endfunction()
+
 
 ##############################################################################
 # Setup ez::common::compile_options target
@@ -40,4 +63,3 @@ else()
         -Wsign-conversion
     )
 endif()
-
