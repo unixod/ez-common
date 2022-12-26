@@ -26,8 +26,10 @@ function(ez_common_enable_build_profile_debug_with_ubasan)
             -fsanitize=address -fsanitize=undefined -fno-omit-frame-pointer -fno-sanitize-recover=all
         CXX_FLAGS
             -fsanitize=address -fsanitize=undefined -fno-omit-frame-pointer -fno-sanitize-recover=all
+        SHARED_LINKER_FLAGS
+            -fsanitize=address -fsanitize=undefined
         EXE_LINKER_FLAGS
-            -fsanitize=address -fsanitize=undefined -fno-omit-frame-pointer -fno-sanitize-recover=all
+            -fsanitize=address -fsanitize=undefined
     )
 endfunction()
 

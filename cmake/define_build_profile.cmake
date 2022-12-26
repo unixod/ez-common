@@ -81,7 +81,8 @@ function(ez_common_define_build_profile new_profile)
 
         if (DEFINED dbp_${k})
             list(JOIN dbp_${k} " " options)
-            set(CMAKE_${k}_${new_profile} ${options} CACHE STRING "" FORCE)
+            set(CMAKE_${k}_${new_profile}
+                "$CACHE{CMAKE_${k}_${new_profile}} ${options}" CACHE STRING "" FORCE)
         endif()
     endforeach()
 endfunction()
