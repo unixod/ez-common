@@ -63,5 +63,6 @@ else()
         -Wpedantic
         -Wshadow
         -Wsign-conversion
+        -fconcepts-diagnostics-depth=2
     )
 endif()
