@@ -63,6 +63,6 @@ else()
         -Wpedantic
         -Wshadow
         -Wsign-conversion
-        -fconcepts-diagnostics-depth=2
+        $<$<CXX_COMPILER_ID:GNU>:-fconcepts-diagnostics-depth=2>
     )
 endif()
